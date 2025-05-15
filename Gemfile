@@ -25,6 +25,13 @@ gem "bootsnap", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
+# Use JWT for token-based authentication
+gem "jwt", "~> 2.10"
+
+# Structured and leveled logging with support for JSON output, log filtering, and external log services
+gem "amazing_print", "~> 1.8"
+gem "rails_semantic_logger", "~> 4.17"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -38,5 +45,16 @@ group :development, :test do
   # Test framework [https://github.com/rspec/rspec-rails]
   gem "rspec-rails", "~> 8.0.0"
 
-  gem "factory_bot_rails"
+  # Fixtures replacement to easily create test data
+  gem "factory_bot_rails", "~> 6.4"
+
+  # Loads environment variables from .env file for local development
+  gem "dotenv", "~> 3.1"
+
+  # Used to generate fake but realistic test data (e.g., names, IPs, user agents)
+  gem "faker", "~> 3.5"
+end
+
+group :development do
+  gem "ruby-lsp-rspec", require: false
 end
