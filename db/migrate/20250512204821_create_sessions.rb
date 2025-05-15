@@ -5,7 +5,6 @@ class CreateSessions < ActiveRecord::Migration[8.0]
       t.string :jti, null: false
       t.string :ip_address
       t.string :user_agent
-      t.datetime :last_used_at
       t.datetime :expires_at, null: false
       t.datetime :revoked_at
 

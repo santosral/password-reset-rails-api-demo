@@ -1,4 +1,4 @@
 class Current < ActiveSupport::CurrentAttributes
   attribute :user, :session
-  attribute :user_agent, :remote_ip
+  attribute :user_agent, :ip_address
 end

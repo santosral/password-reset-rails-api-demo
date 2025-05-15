@@ -59,7 +59,11 @@ module AuthService
       request_method:  :request_method,
       user_agent:      :user_agent
     }
-    # For testing JSON format
-    config.semantic_logger.add_appender(io: $stdout, formatter: :json)
+    # # For testing JSON format
+    # config.semantic_logger.add_appender(io: $stdout, formatter: :json)
+
+    # Route exceptions like 404 and 500 to custom controller actions
+    # This allows Rails to handle errors via the router
+    config.exceptions_app = self.routes
   end
 end

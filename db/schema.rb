@@ -15,17 +15,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_12_204821) do
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
 
-  create_table "password_resets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "password_reset_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
-    t.string "token", null: false
+    t.string "token_digest", null: false
     t.datetime "expires_at", null: false
     t.datetime "used_at"
+    t.datetime "revoked_at"
     t.string "user_agent"
     t.string "ip_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["token"], name: "index_password_resets_on_token", unique: true
-    t.index ["user_id"], name: "index_password_resets_on_user_id"
+    t.index ["token_digest"], name: "index_password_reset_tokens_on_token_digest", unique: true
+    t.index ["user_id"], name: "index_password_reset_tokens_on_user_id"
   end
 
   create_table "sessions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -33,7 +34,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_12_204821) do
     t.string "jti", null: false
     t.string "ip_address"
     t.string "user_agent"
-    t.datetime "last_used_at"
     t.datetime "expires_at", null: false
     t.datetime "revoked_at"
     t.datetime "created_at", null: false
@@ -50,6 +50,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_12_204821) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
-  add_foreign_key "password_resets", "users"
+  add_foreign_key "password_reset_tokens", "users"
   add_foreign_key "sessions", "users"
 end
