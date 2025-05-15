@@ -47,7 +47,7 @@ module AuthService
     config.active_record.encryption.store_key_references = true
 
     # Setup structured logging
-    config.semantic_logger.application = "jwt_auth_api"
+    config.semantic_logger.application = "auth_service"
     config.semantic_logger.environment = Rails.env
     config.rails_semantic_logger.started    = true
     config.rails_semantic_logger.processing = true
@@ -65,5 +65,8 @@ module AuthService
     # Route exceptions like 404 and 500 to custom controller actions
     # This allows Rails to handle errors via the router
     config.exceptions_app = self.routes
+
+  # Set the default host for URL helpers (e.g., reset_password_url)
+  Rails.application.routes.default_url_options[:host] = ENV.fetch("APP_HOST", "")
   end
 end
