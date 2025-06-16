@@ -26,7 +26,7 @@ gem "bootsnap", require: false
 # gem "rack-cors"
 
 # Use JWT for token-based authentication
-gem "jwt", "~> 2.10"
+gem "jwt", "~> 3.0"
 
 # Structured and leveled logging with support for JSON output, log filtering, and external log services
 gem "amazing_print", "~> 1.8"
