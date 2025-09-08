@@ -46,7 +46,7 @@ group :development, :test do
   gem "rspec-rails", "~> 8.0.0"
 
   # Fixtures replacement to easily create test data
-  gem "factory_bot_rails", "~> 6.4"
+  gem "factory_bot_rails", "~> 6.5"
 
   # Loads environment variables from .env file for local development
   gem "dotenv", "~> 3.1"
