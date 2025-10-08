@@ -29,7 +29,7 @@ gem "bootsnap", require: false
 gem "jwt", "~> 2.10"
 
 # Structured and leveled logging with support for JSON output, log filtering, and external log services
-gem "amazing_print", "~> 1.8"
+gem "amazing_print", "~> 2.0"
 gem "rails_semantic_logger", "~> 4.17"
 
 group :development, :test do
